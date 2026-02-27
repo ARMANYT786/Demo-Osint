@@ -97,6 +97,6 @@ ADMIN_ID = 123456789                    # Your Telegram user ID
   - Duplicate prevention
 
 
-# scrennshot
+# screenshot
 
 <img src="https://github.com/user-attachments/assets/8f97a203-dcfb-4f61-a501-bc36751016d4">
