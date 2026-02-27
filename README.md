@@ -63,8 +63,8 @@ Demo-OSINT is a professional-grade Telegram intelligence gathering platform desi
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/Demo-OSINT.git
-cd Demo-OSINT
+git clone https://github.com/yourusername/Demo-Osint.git
+cd Demo-Osint
 
 # Install dependencies
 pip install telebot telethon aiosqlite
@@ -73,7 +73,7 @@ pip install telebot telethon aiosqlite
 
 ### Configuration
 
-Edit manage.py:
+Edit bot.py:
 
 ```
 TELEGRAM_TOKEN = 'YOUR_BOT_TOKEN'      # From @BotFather
