@@ -1,60 +1,97 @@
-## Demo Osint Telegram 
+# 🔍 Demo-OSINT
 
-You can use this tool to collect other people's messages from your accounts into public groups! Save everything!
+<div align="center">
 
-This source enters your account via Api Hash\id
-and starts collecting and storing user information in public groups with all accounts!
+[![Python](https://img.shields.io/badge/Python-3.9+-blue?logo=python)](https://python.org)
+[![Telegram](https://img.shields.io/badge/Telegram-Bot-2CA5E0?logo=telegram)](https://telegram.org)
+[![SQLite](https://img.shields.io/badge/SQLite-3-003B57?logo=sqlite)](https://sqlite.org)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-<img src="https://github.com/user-attachments/assets/8f97a203-dcfb-4f61-a501-bc36751016d4">
+**Advanced Telegram OSINT & Message Intelligence Platform**
 
-Information it stores:
+[Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [Architecture](#-architecture)
 
-`
-User id
-Username
-First name
-Last name
-Phone
-Message Id
-Message
-Group Id
-Group Name
-Datetime
-`
+</div>
 
-## How to use:
+---
 
-Run the `manage.py` file
-You can add accounts to the bot through this file
+## 📋 Overview
 
-Then run the `scrap.py` file
-This file will log into your accounts and start collecting data in parallel and simultaneously
+Demo-OSINT is a professional-grade Telegram intelligence gathering platform designed for security research and digital forensics. It provides real-time message monitoring, multi-account management, and advanced search capabilities across Telegram conversations.
 
-You can edit the `bot.py` file at any time, insert the token and chat ID of the admin. Now you can search the database through the Telegram bot!
+> ⚠️ **For authorized security testing and research purposes only**
 
-You can also read database information in the terminal by running the `show-db.py` file!
+---
 
-Please note that this version is a demo version of the original version! The original version is for sale!
+## ✨ Features
 
-Best Version For ReSearcher: https://github.com/Mr-Spect3r/TeleHunt
+| Module | Capability |
+|--------|-----------|
+| **🔐 Multi-Account Management** | Secure Telegram API integration with session persistence |
+| **📡 Real-time Monitoring** | Live message capture from multiple accounts simultaneously |
+| **🗄️ Intelligent Storage** | SQLite database with deduplication and indexing |
+| **🔎 Advanced Search** | Full-text search by content, username, or user ID |
+| **🤖 Bot Interface** | Interactive Telegram bot for remote querying |
+| **📊 Admin Dashboard** | Account management and statistics panel |
 
-# Vip Version:
+---
 
-<b>
-Ability to manage accounts and add accounts via Telegram bot
+## 🏗️ Architecture
 
-Ability to sell information with points (you can share this information) 10 points per search!
+```
+┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
+│  Telegram Bot   │────▶│   SQLite DB      │◄────│  Scraper Engine │
+│   (bot.py)      │     │   (monitor.db)   │     │   (scrap.py)    │
+└─────────────────┘     └──────────────────┘     └─────────────────┘
+│                                              │
+▼                                              ▼
+┌──────────┐                                  ┌──────────┐
+│  Admin   │                                  │ Telethon │
+│  Panel   │                                  │ Clients  │
+└──────────┘                                  └──────────┘
+```
 
-Ability to sub-group
+---
 
-Ability to ban, admin, add points
+## 🚀 Installation
 
-Ability to automatically sell points
+### Prerequisites
+- Python 3.9+
+- Telegram API credentials ([my.telegram.org](https://my.telegram.org))
 
-Ability to manage the database optimally
+### Setup
 
-200GB of data is also for sale
+```bash
+# Clone repository
+git clone https://github.com/yourusername/Demo-OSINT.git
+cd Demo-OSINT
 
+# Install dependencies
+pip install telebot telethon aiosqlite
 
-By:</b> https://t.me/MrEsfelurm
+```
 
+### Configuration
+
+Edit manage.py:
+
+```
+TELEGRAM_TOKEN = 'YOUR_BOT_TOKEN'      # From @BotFather
+ADMIN_ID = 123456789                    # Your Telegram user ID
+```
+
+# 📖 Usage
+
+1. Start bot.py
+2. Go to telegram bot and add account in Panel
+3. Run scrap.py
+
+# scarp
+
+- Features:
+
+  - Automatic database initialization
+  - Multi-account concurrent monitoring
+  - Historical message backfill
+  - Real-time new message capture
+  - Duplicate prevention
