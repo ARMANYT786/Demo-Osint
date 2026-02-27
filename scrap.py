@@ -36,12 +36,15 @@ async def init_db():
     await conn.commit()
     return conn
 
-def load_accounts():
+def load_accounts(active_only=True):
     if not os.path.exists(ACCOUNTS_FILE):
         return []
     with open(ACCOUNTS_FILE, 'r') as f:
         data = json.load(f)
-        return data.get("accounts", [])
+        accounts = data.get("accounts", [])
+        if active_only:
+            accounts = [acc for acc in accounts if acc.get("status", True)]
+        return accounts
 
 async def save_message(conn, account_name, account_phone, data):
     try:
@@ -147,9 +150,10 @@ async def monitor_account(account, conn):
 
 async def main():
     conn = await init_db()
-    accounts = load_accounts()
+    accounts = load_accounts(active_only=True)  
+
     if not accounts:
-        print("No accounts found in accounts.json")
+        print("No active accounts found in accounts.json")
         return
 
     tasks = [monitor_account(acc, conn) for acc in accounts]
