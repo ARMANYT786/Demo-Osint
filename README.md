@@ -9,7 +9,7 @@
 
 **Advanced Telegram OSINT & Message Intelligence Platform**
 
-[Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [Architecture](#-architecture)
+[Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [Architecture](#-screenshot)
 
 </div>
 
@@ -95,3 +95,8 @@ ADMIN_ID = 123456789                    # Your Telegram user ID
   - Historical message backfill
   - Real-time new message capture
   - Duplicate prevention
+
+
+# scrennshot
+
+<img src="https://github.com/user-attachments/assets/8f97a203-dcfb-4f61-a501-bc36751016d4">
