@@ -9,7 +9,7 @@
 
 **Advanced Telegram OSINT & Message Intelligence Platform**
 
-[Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [Architecture](#-screenshot)
+[Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [ScrenShot](#-screenshot)
 
 </div>
 
