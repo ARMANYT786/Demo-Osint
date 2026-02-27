@@ -10,7 +10,7 @@ from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 TELEGRAM_TOKEN = 'Token Bot'
 DB_FILE = 'db/monitor.db'
-ADMIN_ID = 7295479621
+ADMIN_ID = 123456789
 MAX_LIMIT = 50
 bot = telebot.TeleBot(TELEGRAM_TOKEN)
 ACCOUNTS_FOLDER = 'accounts'
@@ -401,11 +401,31 @@ def callbacks(call):
             return
 
         msg = "📄 Accounts List:\n\n"
+        kb = InlineKeyboardMarkup()
+
         for i, a in enumerate(accounts, 1):
-            msg += f"{i}) {a['phone']} | {a['name']} | {a['id']}\n"
+            status_emoji = "✅" if a.get("status", True) else "❌"
+            msg += f"{i}) {a['phone']} | {a['name']} | {a['id']} | {status_emoji}\n"
 
-        bot.send_message(call.message.chat.id, msg)
+            kb.add(InlineKeyboardButton(f"{status_emoji} Toggle {a['name']}", callback_data=f"toggle_{i-1}"))
 
+        send_long_message(call.message.chat.id, msg, reply_markup=kb)
+
+    elif call.data.startswith("toggle_"):
+        idx = int(call.data.split("_")[1])
+        data = load_accounts()
+        accounts = data.get("accounts", [])
+
+        if 0 <= idx < len(accounts):
+            accounts[idx]["status"] = not accounts[idx].get("status", True)
+            save_accounts(data)
+            status_emoji = "✅" if accounts[idx]["status"] else "❌"
+            bot.answer_callback_query(call.id, f"Status changed to {status_emoji}")
+
+            bot.delete_message(call.message.chat.id, call.message.message_id)
+            call.data = "list_accounts"
+            callbacks(call)
+            
 @bot.message_handler(func=lambda m: True)
 def steps(msg):
     user_id = msg.from_user.id
@@ -476,4 +496,3 @@ def steps(msg):
 
 
 bot.polling(non_stop=True)
-
