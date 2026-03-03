@@ -8,9 +8,9 @@ import threading
 import asyncio,os,json
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-TELEGRAM_TOKEN = 'Token Bot'
+TELEGRAM_TOKEN = '7955215390:AAHdxrbivykG0G7E2OLtAwRCPZk27dVD68Q'
 DB_FILE = 'db/monitor.db'
-ADMIN_ID = 123456789
+ADMIN_ID = 6222987321
 MAX_LIMIT = 50
 bot = telebot.TeleBot(TELEGRAM_TOKEN)
 ACCOUNTS_FOLDER = 'accounts'
@@ -496,3 +496,4 @@ def steps(msg):
 
 
 bot.polling(non_stop=True)
+
